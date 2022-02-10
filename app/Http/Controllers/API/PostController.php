@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\API\ApiController;
+use App\Http\Resources\PostResource;
 use App\Models\Like;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -11,22 +12,9 @@ class PostController extends ApiController
 {
     public function list()
     {
-        $posts = Post::get();
-        
-        $data = collect();
-        foreach ($posts as $post) {
-            $data->add([
-                'id'          => $post->id,
-                'title'       => $post->title,
-                'description' => $post->description,
-                'tags'        => $post->tags,
-                'like_counts' => $post->likes->count(),
-                'created_at'  => $post->created_at,
-            ]);
-        }
-        return response()->json([
-            'data' => $data,
-        ]);
+       
+        return PostResource::collection(Post::get());
+   
     }
     
     public function toggleReaction(Request $request)
