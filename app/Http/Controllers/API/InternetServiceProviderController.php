@@ -11,23 +11,20 @@ class InternetServiceProviderController extends ApiController
 {
     public function getMptInvoiceAmount(Request $request)
     {
-        $mpt = new Mpt();
-        $mpt->setMonth($request->get('month') ?: 1);
-        $amount = $mpt->calculateTotalAmount();
-        
-        return response()->json([
-            'data' => $amount
-        ]);
+        $amount = $this->InvoiceAmount(new Mpt(), $request->get('month'));
+       
+        return $this->respondSuccessData($amount);
     }
     
     public function getOoredooInvoiceAmount(Request $request)
     {
-        $ooredoo = new Ooredoo();
-        $ooredoo->setMonth($request->get('month') ?: 1);
-        $amount = $ooredoo->calculateTotalAmount();
-        
-        return response()->json([
-            'data' => $amount
-        ]);
+        $amount = $this->InvoiceAmount(new Ooredoo(), $request->get('month'));
+        return $this->respondSuccessData($amount);
+    }
+
+    public static function InvoiceAmount($service, $month = 1) {
+        $service->setMonth($month);
+        $amount = $service->calculateTotalAmount();
+        return $amount;
     }
 }

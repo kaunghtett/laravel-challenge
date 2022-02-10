@@ -115,4 +115,13 @@ abstract class ApiController extends BaseController
 
         return response()->json($data, $this->getStatusCode(), $headers);
     }
+
+    public function respondSuccessData($data, $headers = []) {
+        $data = [
+            'data' => $data, 
+            'code' => $this->getStatusCode()
+        ];
+
+        return response()->json($data, $this->getStatusCode(), $headers);
+    }
 }
