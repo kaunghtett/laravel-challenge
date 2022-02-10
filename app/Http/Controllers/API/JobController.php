@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\API\ApiController;
 use App\Services\EmployeeManagement\Applicant;
 use Illuminate\Http\Request;
 
-class JobController extends Controller
+class JobController extends ApiController
 {
     protected $applicant;
     

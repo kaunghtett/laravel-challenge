@@ -4,8 +4,8 @@ Refactor the nasty codes of the current project. Feel free to make any necessary
 
 ### TODO
 
-- [ ] api/login
-- [ ] api/posts
+- [ ] api/login //todo validation 
+- [ ] api/posts  // use resource
 - [ ] api/posts/reaction
 
 

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\API\ApiController;
 use App\Services\EmployeeManagement\Staff;
 use Illuminate\Http\Request;
 
-class StaffController extends Controller
+class StaffController extends ApiController
 {
     protected $staff;
     

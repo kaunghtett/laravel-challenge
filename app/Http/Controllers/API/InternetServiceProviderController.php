@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Api\ApiController;
 use App\Services\InternetServiceProvider\Mpt;
 use App\Services\InternetServiceProvider\Ooredoo;
 use Illuminate\Http\Request;
 
-class InternetServiceProviderController extends Controller
+class InternetServiceProviderController extends ApiController
 {
     public function getMptInvoiceAmount(Request $request)
     {
