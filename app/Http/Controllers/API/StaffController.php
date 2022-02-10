@@ -3,21 +3,22 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\API\ApiController;
-use App\Services\EmployeeManagement\Staff;
+use App\Services\EmployeeManagement\Employee;
+// use App\Services\EmployeeManagement\Staff;
 use Illuminate\Http\Request;
 
 class StaffController extends ApiController
 {
-    protected $staff;
+    protected $employee;
     
-    public function __construct(Staff $staff)
+    public function __construct(Employee $employee)
     {
-        $this->staff = $staff;
+        $this->employee = $employee;
     }
     
     public function payroll()
     {
-        $data = $this->staff->salary();
+        $data = $this->employee->salary();
     
         return response()->json([
             'data' => $data
